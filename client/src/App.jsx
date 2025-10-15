@@ -1,6 +1,6 @@
-export default function App() {
-  return (
-    <p>Привет</p>
-  )
+import Router from "./app/Router/Router";
+
+export function App() {
+  return <Router />;
 }
 
