@@ -24,3 +24,5 @@ module.exports = (sequelize, DataTypes) => {
   );
   return Content;
 };
+
+module.exports = 
