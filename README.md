@@ -1,1 +1,1 @@
-# --Coding-Wiki
+# Coding-Wiki
