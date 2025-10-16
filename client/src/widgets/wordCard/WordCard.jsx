@@ -1,6 +1,9 @@
+import { useNavigate } from "react-router";
 import Card from "react-bootstrap/Card";
 
 export default function WordCard({ data, user }) {
+  const navigate = useNavigate();
+
   const showEditButtons =
     user?.data?.isAdmin || user?.data?.id === data.user_id;
 
@@ -21,8 +24,9 @@ export default function WordCard({ data, user }) {
         }
       );
 
+      navigate("/");
+
       if (response.status === 200) {
-        console.log("Элемент успешно удален");
         return true;
       } else {
         console.log("Ошибка при удалении");
