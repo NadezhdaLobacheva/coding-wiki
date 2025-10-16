@@ -3,8 +3,6 @@ import Card from "react-bootstrap/Card";
 export default function WordCard({ data, user }) {
   const showEditButtons = user?.data?.isAdmin || user?.data?.id === data.user_id;
 
-  console.log(user);
-
   return (
     <Card style={{ width: "18rem" }}>
       <Card.Body>

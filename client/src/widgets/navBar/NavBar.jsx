@@ -18,7 +18,7 @@ export default function NavBar({ setUser, user }) {
   return (
     <Navbar bg="dark" data-bs-theme="dark">
       <Container>
-        <Navbar.Brand href="#home">CODING WIKI</Navbar.Brand>
+        <Navbar.Brand href="/">CODING WIKI</Navbar.Brand>
         <div style={{ display: "flex", gap: 12, alignItems: "center" }}>
           {user.status === "logged" ? (
             <>

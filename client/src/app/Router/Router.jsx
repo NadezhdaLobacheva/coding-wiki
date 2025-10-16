@@ -14,15 +14,15 @@ export default function Router({ user, setUser }) {
     <BrowserRouter>
       <Routes>
         <Route element={<Layout setUser={setUser} user={user} />}>
-          {/* <Route path="/" element={<ContentPage user={user} />} /> */}
-          <Route
+          <Route path="/" element={<ContentPage user={user} />} />
+          {/* <Route
             path="/"
             element={
               <>
                 <Dictionary />
               </>
             }
-          />
+          /> */}
           <Route path="/signup" element={<SignUpPage setUser={setUser} />} />
           <Route path="/login" element={<LoginPage setUser={setUser} />} />
           {/* <Route path="/logout" element={<></>} />   */}
