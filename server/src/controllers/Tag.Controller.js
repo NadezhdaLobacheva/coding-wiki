@@ -60,6 +60,18 @@ class TagController {
         .json({ message: "Ошибка при удалении Тега", error: error.message });
     }
   }
+  
+  static async getTagsSorted(req, res) {
+    try {
+      const order = req.query.order?.toUpperCase() === "ASC" ? "ASC" : "DESC";
+      const tags = await tagService.getTagsSortedByContentCount(order);
+      res.status(200).json({ message: "Теги отсортированы", data: tags });
+    } catch (error) {
+      res
+        .status(500)
+        .json({ message: "Ошибка при сортировке тегов", error: error.message });
+    }
+  }
 }
 
 module.exports = TagController;

@@ -28,8 +28,8 @@ module.exports = {
       [
         {
           user_id: 2,
-          word: "Salsify Taro Catsear Garlic",
-          desc: "Gumbo beet greens corn soko endive gumbo gourd. Parsley shallot courgette tatsoi pea sprouts fava bean collard greens dandelion okra wakame tomato. Dandelion cucumber earthnut pea peanut soko zucchini.",
+          word: "Salsify Taro Catsear Garlic kohlrabi",
+          desc: "Gumbo beet greens corn soko endive gumbo gourd. Parsley shallot courgette kohlrabi tatsoi pea sprouts fava bean collard greens dandelion okra wakame tomato. Dandelion cucumber earthnut pea peanut soko zucchini.",
           createdAt: new Date(),
           updatedAt: new Date(),
         },

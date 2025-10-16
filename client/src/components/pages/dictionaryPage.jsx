@@ -2,11 +2,7 @@ import { useState } from "react"
 
 export default function dictionaryPage() {
 
-  // const [input, setInput] = useState("")
 
-  // const clickHandler = (event) => {
-  //   setInput(event.target.value) 
-  // }
 
   return (
     <>

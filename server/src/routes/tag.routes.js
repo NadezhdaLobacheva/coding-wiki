@@ -1,11 +1,12 @@
-const express = require('express');
-const router = express.Router();
-const tagController = require('../controllers/Tag.Controller');
+const router = require("express").Router();
+const TagController = require("../controllers/Tag.Controller");
 
-router.get('/', tagController.getAllTags); 
-router.get('/:id', tagController.getTagById); 
-router.post('/', tagController.createTag); 
-router.put('/:id', tagController.updateTag); 
-router.delete('/:id', tagController.deleteTag);
+router.get("/sortByContentCount", TagController.getTagsSorted); 
+
+router.get("/", TagController.getAllTags);
+router.get("/:id", TagController.getTagById); 
+router.post("/", TagController.createTag);
+router.put("/:id", TagController.updateTag);
+router.delete("/:id", TagController.deleteTag);
 
 module.exports = router;
