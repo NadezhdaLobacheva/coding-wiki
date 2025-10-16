@@ -1,17 +1,18 @@
 import { BrowserRouter, Routes, Route } from "react-router";
 import Layout from "../Layout/Layout";
 import SignInPage from "../../pages/AuthPages/SignInPage";
-import SignUpPage from "../../pages/AuthPages/SignUpPage"
+import SignUpPage from "../../pages/AuthPages/SignUpPage";
+import ContentPage from "../../pages/ContentPage/ContentPage"
 
 // TODO Создать и импортировать сюда страницу Админа "ProfilePage"
 // Логика logout прописана в NavBar
 
-export default function Router() {
+export default function Router(setUser, user) {
   return (
     <BrowserRouter>
       <Routes>
         <Route element={<Layout />}>
-          <Route path="/" element={<></>} />
+          <Route path="/" element={<ContentPage/>} />
           <Route path="/signup" element={<SignUpPage setUser={setUser}/>} />
           <Route path="/signin" element={<SignInPage setUser={setUser}/>} />
           {/* <Route path="/signout" element={<></>} /> */}  
