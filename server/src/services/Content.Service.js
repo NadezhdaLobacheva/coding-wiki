@@ -3,7 +3,9 @@ const { Op, fn, col, where } = require("sequelize");
 
 class ContentService {
   static async getAllContents() {
-    return Content.findAll();
+    return Content.findAll({
+      include: ["tags"],
+    });
   }
 
   static async getContentById(id) {

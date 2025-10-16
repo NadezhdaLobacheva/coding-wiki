@@ -15,19 +15,12 @@ export default function Router({ user, setUser }) {
       <Routes>
         <Route element={<Layout setUser={setUser} user={user} />}>
           <Route path="/" element={<ContentPage user={user} />} />
-          {/* <Route
-            path="/"
-            element={
-              <>
-                <Dictionary />
-              </>
-            }
-          /> */}
           <Route path="/signup" element={<SignUpPage setUser={setUser} />} />
           <Route path="/login" element={<LoginPage setUser={setUser} />} />
           {/* <Route path="/logout" element={<></>} />   */}
           <Route path="/profile" element={<ProfilePage user={user} />} />
           <Route path="*" element={<h1>Нет контента</h1>} />
+          {/* <Route path="/search" element={<Dictionary />} /> */}
         </Route>
       </Routes>
     </BrowserRouter>

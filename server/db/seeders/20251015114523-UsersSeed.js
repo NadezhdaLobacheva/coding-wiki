@@ -19,7 +19,7 @@ module.exports = {
           password: await bcrypt.hash("ernEst47@mail.ru", 10),
           isAdmin: false,
         },
-         {
+        {
           name: "Admin",
           email: "isadmin@mail.ru",
           password: await bcrypt.hash("isAdmin123!", 10),
@@ -61,17 +61,17 @@ module.exports = {
       "Tags",
       [
         {
-          desc: "#recursion",
+          desc: "recursion",
           createdAt: new Date(),
           updatedAt: new Date(),
         },
         {
-          desc: "#classes",
+          desc: "classes",
           createdAt: new Date(),
           updatedAt: new Date(),
         },
         {
-          desc: "#asyncAwait",
+          desc: "asyncAwait",
           createdAt: new Date(),
           updatedAt: new Date(),
         },
@@ -84,6 +84,12 @@ module.exports = {
       [
         {
           tag_id: 1,
+          content_id: 3,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          tag_id: 2,
           content_id: 3,
           createdAt: new Date(),
           updatedAt: new Date(),

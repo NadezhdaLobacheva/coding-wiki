@@ -4,12 +4,10 @@ import Navbar from "react-bootstrap/Navbar";
 import UserApi from "../../entities/user/UserApi";
 
 export default function NavBar({ setUser, user }) {
-  // TODO: Добавить  имя пользователя (добавлено) и переход в личный кабинет çпо нему (не осуществлён)
-
-  const logoutHandler = async () => {
+  const handleLogout = async () => {
     try {
       await UserApi.logout();
-      setUser({ status: "logging", data: null }); //  not guest
+      setUser({ status: "logging", data: null });
     } catch (error) {
       console.log("Logout error: ", error);
     }
@@ -22,11 +20,18 @@ export default function NavBar({ setUser, user }) {
         <div style={{ display: "flex", gap: 12, alignItems: "center" }}>
           {user.status === "logged" ? (
             <>
+              {/* <NavLink
+                to={"/search"}
+                className="nav-link"
+                style={{ color: "white" }}
+              >
+                Поиск
+              </NavLink> */}
               <NavLink to={"/"} className="nav-link" style={{ color: "white" }}>
                 {user.data.name}
               </NavLink>
               <NavLink
-                onClick={logoutHandler}
+                onClick={handleLogout}
                 className="nav-link"
                 style={{ color: "white" }}
               >
