@@ -17,7 +17,7 @@ export default function Router({ setUser, user }) {
       <Routes>
         <Route element={<Layout setUser={setUser} user={user}/>}>
           <Route path="/" element={<ContentPage/>} />
-          <Route path="/signup" element={<SignUpPage setUser={setUser}/>} />
+          <Route path="/signup" element={<SignUpPage setUser={setUser} />} />
           <Route path="/login" element={<LoginPage setUser={setUser}/>} />
           {/* <Route path="/logout" element={<></>} />   */}
           <Route path="/profile" element={<ProfilePage user={user}/>} />  

@@ -14,12 +14,15 @@ function SignUpForm({ setUser }) {
       const { isValid, err } = UserValidate.validateSignUpData(formData);
       if (!isValid) return alert(err);
       const res = await UserApi.signup(formData);
+      console.log(res);
+      
       setUser({ status: "logged", data: res.data.user });
+      
       setAccessToken(res.data.accessToken);
       navigate('/')
     } catch (error) {
       console.log(error);
-      alert(error.response.data.message);
+      // alert(error.response?.data.message);
     }
   };
   return (

@@ -9,8 +9,14 @@ module.exports = {
       [
         {
           name: "Jane",
-          email: "jane@mail.ru",
-          password: await bcrypt.hash("123456", 10),
+          email: "jaNe89@mail.ru",
+          password: await bcrypt.hash("jaNe89@mail.ru", 10),
+          isAdmin: false,
+        },
+        {
+          name: "Ernest",
+          email: "ernEst47@mail.ru",
+          password: await bcrypt.hash("ernEst47@mail.ru", 10),
           isAdmin: false,
         },
          {
