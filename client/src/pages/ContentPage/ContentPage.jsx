@@ -122,20 +122,23 @@ export default function ContentPage({ user }) {
           {error}
         </div>
       )}
-      <div>
-        <Button
-          onClick={handleFormOpen}
-          style={{
-            display: "flex",
-            justifyContent: "center",
-            marginTop: 20,
-            width: "100%",
-          }}
-          variant="secondary"
-        >
-          Добавить запись
-        </Button>
-      </div>
+      {user.status === "logged" && (
+        <div>
+          <Button
+            onClick={handleFormOpen}
+            style={{
+              display: "flex",
+              justifyContent: "center",
+              marginTop: 20,
+              width: "100%",
+            }}
+            variant="secondary"
+          >
+            Добавить запись
+          </Button>
+        </div>
+      )}
+
       {isFormOpen && <WordAddForm user={user} />}
       <div
         style={{ display: "flex", gap: 12, marginTop: 25, flexWrap: "wrap" }}
