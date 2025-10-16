@@ -24,7 +24,11 @@ export default function WordCard({ data, user }) {
         }
       );
 
-      navigate("/");
+      if (window.location.pathname === "/profile") {
+        window.location.reload();
+      } else {
+        navigate("/");
+      }
 
       if (response.status === 200) {
         return true;
