@@ -4,9 +4,8 @@ import { useEffect } from "react";
 import axiosInstance, { setAccessToken } from "./shared/lib/axiosInstance";
 
 export function App() {
-
   const [user, setUser] = useState({ status: "logging", data: null });
-  
+
   useEffect(() => {
     axiosInstance("/auth/refreshTokens")
       .then((res) => {
@@ -19,5 +18,5 @@ export function App() {
       });
   }, []);
 
-  return <Router setUser={setUser} user={user} />;
+  return <Router user={user} setUser={setUser} />;
 }
