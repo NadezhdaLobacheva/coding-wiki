@@ -19,7 +19,7 @@ export default function ProfilePage({ user }) {
 
   useEffect(() => {
     getContent();
-  }, []);
+  }, [user]);
 
   if (!words.length) {
     return (
@@ -37,7 +37,7 @@ export default function ProfilePage({ user }) {
   }
 
   return (
-    <div style={{ margin: 25 }}>
+    <div style={{ display: "flex", gap: 12, margin: 25, flexWrap: "wrap" }}>
       {words.map((word) => (
         <WordCard key={word.id} data={word} user={user} />
       ))}

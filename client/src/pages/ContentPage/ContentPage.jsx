@@ -1,14 +1,17 @@
 import { useState, useEffect, useCallback } from "react";
+import { Hash, Calendar2 } from "react-bootstrap-icons";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import debounce from "lodash/debounce";
 import WordCard from "../../widgets/WordCard/WordCard";
+import WordAddForm from "../../widgets/WordAddForm/WordAddForm";
 
 export default function ContentPage({ user }) {
   const [words, setWords] = useState([]);
   const [input, setInput] = useState("");
   const [error, setError] = useState("");
   const [sortDirection, setSortDirection] = useState(null);
+  const [isFormOpen, setIsFormOpen] = useState(false);
 
   async function getContent() {
     try {
@@ -74,6 +77,10 @@ export default function ContentPage({ user }) {
     });
   };
 
+  const handleFormOpen = () => {
+    setIsFormOpen((prev) => !prev);
+  };
+
   useEffect(() => {
     getContent();
   }, []);
@@ -94,16 +101,42 @@ export default function ContentPage({ user }) {
           onChange={handleInput}
         />
         <div style={{ display: "flex", gap: 6 }}>
-          <Button variant="secondary" size="sm">
-            По дате
+          <Button onClick={handleSortDate} variant="secondary" size="sm">
+            <Calendar2 />
           </Button>
           <Button onClick={handleSortTags} variant="secondary" size="sm">
-            По кол-ву тегов
+            <Hash />
           </Button>
         </div>
       </div>
-
-      {error && <div style={{ color: "red" }}>{error}</div>}
+      {error && (
+        <div
+          style={{
+            display: "flex",
+            justifyContent: "center",
+            width: "100%",
+            marginTop: 20,
+            color: "red",
+          }}
+        >
+          {error}
+        </div>
+      )}
+      <div>
+        <Button
+          onClick={handleFormOpen}
+          style={{
+            display: "flex",
+            justifyContent: "center",
+            marginTop: 20,
+            width: "100%",
+          }}
+          variant="secondary"
+        >
+          Добавить запись
+        </Button>
+      </div>
+      {isFormOpen && <WordAddForm user={user} />}
       <div
         style={{ display: "flex", gap: 12, marginTop: 25, flexWrap: "wrap" }}
       >

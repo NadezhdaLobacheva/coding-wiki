@@ -1,4 +1,4 @@
-const { Content, Support } = require("../../db/models");
+const { Content, Support, Tag } = require("../../db/models");
 const { Op, fn, col, where } = require("sequelize");
 
 class ContentService {
@@ -22,7 +22,28 @@ class ContentService {
   }
 
   static async createContent(data) {
-    return Content.create(data);
+    try {
+      const content = await Content.create(data);
+
+      if (data.tags && typeof data.tags === "string") {
+        const tagNames = data.tags
+          .split(/[\s,]+/)
+          .filter((tag) => tag.trim() !== "");
+
+        for (const tagName of tagNames) {
+          const [tag] = await Tag.findOrCreate({
+            where: { desc: tagName.trim() },
+          });
+
+          await content.addTags(tag, { through: "Support" });
+        }
+      }
+
+      return content;
+    } catch (error) {
+      console.error("Error in createContent:", error);
+      throw error;
+    }
   }
 
   static async updateContent(id, data) {
