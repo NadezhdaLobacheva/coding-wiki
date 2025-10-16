@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const contentController = require('../controllers/Content.Controller');
+const contentController = require('../controllers/ContentController');
 
 // Специфичные маршруты — СНАЧАЛА!
 router.get('/search', contentController.searchContent);

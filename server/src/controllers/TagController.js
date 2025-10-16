@@ -1,4 +1,4 @@
-const tagService = require("../services/Tag.Service");
+const tagService = require("../services/TagService");
 
 class TagController {
   static async getAllTags(req, res) {

@@ -1,10 +1,10 @@
 const router = require("express").Router();
-const TagController = require("../controllers/Tag.Controller");
+const TagController = require("../controllers/TagController");
 
-router.get("/sortByContentCount", TagController.getTagsSorted); 
+router.get("/sortByContentCount", TagController.getTagsSorted);
 
 router.get("/", TagController.getAllTags);
-router.get("/:id", TagController.getTagById); 
+router.get("/:id", TagController.getTagById);
 router.post("/", TagController.createTag);
 router.put("/:id", TagController.updateTag);
 router.delete("/:id", TagController.deleteTag);
