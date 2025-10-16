@@ -1,4 +1,4 @@
-const { Tag } = require("../../db/models");
+const { Tag, Content, Sequelize } = require("../../db/models");
 
 class TagService {
   static async getAllTags() {
@@ -23,6 +23,26 @@ class TagService {
     const tag = await Tag.findByPk(id);
     if (!tag) return null;
     return await tag.destroy();
+  }
+
+  static async getTagsSortedByContentCount(order = "DESC") {
+    return Tag.findAll({
+      attributes: {
+        include: [
+          [Sequelize.fn("COUNT", Sequelize.col("contents.id")), "wordCount"],
+        ],
+      },
+      include: [
+        {
+          model: Content,
+          as: "contents",
+          attributes: [],
+          through: { attributes: [] },
+        },
+      ],
+      group: ["Tag.id", "Tag.desc", "Tag.createdAt", "Tag.updatedAt"],
+      order: [[Sequelize.col("wordCount"), order]],
+    });
   }
 }
 
