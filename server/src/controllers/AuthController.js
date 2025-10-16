@@ -1,6 +1,6 @@
 const { User } = require('../../db/models');
 const bcrypt = require('bcrypt');
-const AuthService = require('../services/AuthServices');
+const AuthService = require('../services/AuthService');
 const generateTokens = require('../utils/generateTokens');
 const cookieConfig = require('../configs/cookieConfig');
 

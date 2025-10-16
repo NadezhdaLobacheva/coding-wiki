@@ -1,34 +1,62 @@
 import { NavLink } from "react-router";
 import Container from "react-bootstrap/Container";
-import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
+import UserApi from "../../entities/user/UserApi";
 
-export default function NavBar() {
-  // TODO: Сделать условный рендеринг в зависимости от авторизован или нет
-  // TODO: Исправить роуты для авторизации / регистрации / выхода при необходимости
-  // TODO: Добавить имя пользователя и переход в личный кабинет по нему
+export default function NavBar({ setUser, user }) {
+  const handleLogout = async () => {
+    try {
+      await UserApi.logout();
+      setUser({ status: "logging", data: null });
+    } catch (error) {
+      console.log("Logout error: ", error);
+    }
+  };
 
   return (
     <Navbar bg="dark" data-bs-theme="dark">
       <Container>
-        <Navbar.Brand href="#home">CODING WIKI</Navbar.Brand>
-        <Nav>
-          <NavLink to={"/"} className="nav-link">
-            Словарь
-          </NavLink>
-          <NavLink to={"/signup"} className="nav-link">
-            Регистрация
-          </NavLink>
-          <NavLink to={"/signin"} className="nav-link">
-            Войти
-          </NavLink>
-          <NavLink to={"/signout"} className="nav-link">
-            Выйти
-          </NavLink>
-          <NavLink to={"/profile"} className="nav-link">
-            [Имя]
-          </NavLink>
-        </Nav>
+        <Navbar.Brand href="/">CODING WIKI</Navbar.Brand>
+        <div style={{ display: "flex", gap: 12, alignItems: "center" }}>
+          {user.status === "logged" ? (
+            <>
+              {/* <NavLink
+                to={"/search"}
+                className="nav-link"
+                style={{ color: "white" }}
+              >
+                Поиск
+              </NavLink> */}
+              <NavLink to={"/profile"} className="nav-link" style={{ color: "white" }}>
+                {user.data.name}
+              </NavLink>
+              <NavLink
+                onClick={handleLogout}
+                className="nav-link"
+                style={{ color: "white" }}
+              >
+                Выйти
+              </NavLink>
+            </>
+          ) : (
+            <>
+              <NavLink
+                to={"/signup"}
+                className="nav-link"
+                style={{ color: "white" }}
+              >
+                Регистрация
+              </NavLink>
+              <NavLink
+                to={"/login"}
+                className="nav-link"
+                style={{ color: "white" }}
+              >
+                Вход
+              </NavLink>
+            </>
+          )}
+        </div>
       </Container>
     </Navbar>
   );

@@ -9,11 +9,17 @@ module.exports = {
       [
         {
           name: "Jane",
-          email: "jane@mail.ru",
-          password: await bcrypt.hash("123456", 10),
+          email: "jaNe89@mail.ru",
+          password: await bcrypt.hash("jaNe89@mail.ru", 10),
           isAdmin: false,
         },
-         {
+        {
+          name: "Ernest",
+          email: "ernEst47@mail.ru",
+          password: await bcrypt.hash("ernEst47@mail.ru", 10),
+          isAdmin: false,
+        },
+        {
           name: "Admin",
           email: "isadmin@mail.ru",
           password: await bcrypt.hash("isAdmin123!", 10),
@@ -28,13 +34,13 @@ module.exports = {
       [
         {
           user_id: 2,
-          word: "Salsify Taro Catsear Garlic",
-          desc: "Gumbo beet greens corn soko endive gumbo gourd. Parsley shallot courgette tatsoi pea sprouts fava bean collard greens dandelion okra wakame tomato. Dandelion cucumber earthnut pea peanut soko zucchini.",
+          word: "Salsify Taro Catsear Garlic kohlrabi",
+          desc: "Gumbo beet greens corn soko endive gumbo gourd. Parsley shallot courgette kohlrabi tatsoi pea sprouts fava bean collard greens dandelion okra wakame tomato. Dandelion cucumber earthnut pea peanut soko zucchini.",
           createdAt: new Date(),
           updatedAt: new Date(),
         },
         {
-          user_id: 2,
+          user_id: 3,
           word: "Kohlrabi Radish Okra Azuki",
           desc: "Turnip greens yarrow ricebean rutabaga endive cauliflower sea lettuce kohlrabi amaranth water spinach avocado daikon napa cabbage asparagus winter purslane kale.",
           createdAt: new Date(),
@@ -55,17 +61,17 @@ module.exports = {
       "Tags",
       [
         {
-          desc: "#recursion",
+          desc: "recursion",
           createdAt: new Date(),
           updatedAt: new Date(),
         },
         {
-          desc: "#classes",
+          desc: "classes",
           createdAt: new Date(),
           updatedAt: new Date(),
         },
         {
-          desc: "#asyncAwait",
+          desc: "asyncAwait",
           createdAt: new Date(),
           updatedAt: new Date(),
         },
@@ -78,6 +84,12 @@ module.exports = {
       [
         {
           tag_id: 1,
+          content_id: 3,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          tag_id: 2,
           content_id: 3,
           createdAt: new Date(),
           updatedAt: new Date(),
