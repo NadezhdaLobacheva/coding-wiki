@@ -40,7 +40,7 @@ module.exports = {
           updatedAt: new Date(),
         },
         {
-          user_id: 2,
+          user_id: 3,
           word: "Kohlrabi Radish Okra Azuki",
           desc: "Turnip greens yarrow ricebean rutabaga endive cauliflower sea lettuce kohlrabi amaranth water spinach avocado daikon napa cabbage asparagus winter purslane kale.",
           createdAt: new Date(),

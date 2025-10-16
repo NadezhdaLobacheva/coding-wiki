@@ -1,4 +1,4 @@
-const { Content } = require("../../db/models");
+const { Content, Support } = require("../../db/models");
 const { Op, fn, col, where } = require("sequelize");
 
 class ContentService {
@@ -12,6 +12,15 @@ class ContentService {
     return Content.findByPk(id);
   }
 
+  static async getContentByUserId(userId) {
+    return Content.findAll({
+      where: {
+        user_id: userId,
+      },
+      include: ["tags"],
+    });
+  }
+
   static async createContent(data) {
     return Content.create(data);
   }
@@ -23,9 +32,19 @@ class ContentService {
   }
 
   static async deleteContent(id) {
-    const content = await Content.findByPk(id);
-    if (!content) return null;
-    return await content.destroy();
+    try {
+      await Support.destroy({
+        where: { content_id: id },
+      });
+
+      const result = await Content.destroy({
+        where: { id: id },
+      });
+
+      return result;
+    } catch (error) {
+      throw error;
+    }
   }
 
   static async getSortedByDate(order = "DESC") {

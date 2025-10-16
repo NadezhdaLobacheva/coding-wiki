@@ -27,7 +27,7 @@ export default function NavBar({ setUser, user }) {
               >
                 Поиск
               </NavLink> */}
-              <NavLink to={"/"} className="nav-link" style={{ color: "white" }}>
+              <NavLink to={"/profile"} className="nav-link" style={{ color: "white" }}>
                 {user.data.name}
               </NavLink>
               <NavLink

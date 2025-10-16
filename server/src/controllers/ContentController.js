@@ -11,6 +11,16 @@ class ContentController {
     }
   }
 
+  static async getContentByUserId(req, res) {
+    try {
+      const contents = await contentService.getContentByUserId(req.params.id);
+
+      res.status(200).json({ message: "Список слов", data: contents });
+    } catch (error) {
+      res.status(500).json({ message: "Ошибка сервера", error: error.message });
+    }
+  }
+
   static async getContentById(req, res) {
     try {
       const content = await contentService.getContentById(req.params.id);
