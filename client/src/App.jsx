@@ -4,25 +4,20 @@ import { useEffect } from "react";
 import axiosInstance, { setAccessToken } from "./shared/lib/axiosInstance";
 
 export function App() {
-   // Добавляем isAdmin в начальное состояние 
-   const [user, setUser] = useState({ status: "logging", data: null , isAdmin: false});
+
+  const [user, setUser] = useState({ status: "logging", data: null });
   
   useEffect(() => {
     axiosInstance("/auth/refreshTokens")
       .then((res) => {
-      const userData = res.data.user;
-      const isAdmin = Boolean(userData?.isAdmin);
-
-         setUser({ 
-          status: "logged", data: userData, isAdmin });
+        setUser({ status: "logged", data: res.data.user });
         setAccessToken(res.data.accessToken);
       })
       .catch(() => {
-        setUser({ status: "guest", data: null, isAdmin: false });
+        setUser({ status: "guest", data: null });
         setAccessToken("");
       });
   }, []);
 
   return <Router setUser={setUser} user={user} />;
 }
-

@@ -1,12 +1,9 @@
 import React from "react";
 import styles from "./LoginForm.module.css";
-
 import UserValidate from "../../entities/user/UserValidate";
 import UserApi from "../../entities/user/UserApi";
 import { setAccessToken } from "../../shared/lib/axiosInstance";
 import { useNavigate } from "react-router";
-
-
 
 export default function LoginForm({ setUser }) {
   const navigate = useNavigate();
@@ -19,7 +16,7 @@ export default function LoginForm({ setUser }) {
       const res = await UserApi.login(formData);
       setUser({ status: "logged", data: res.data.user });
       setAccessToken(res.data.accessToken);
-      navigate("/tea");
+      navigate("/");
     } catch (error) {
       console.log(error);
       alert(error.response.data?.message);
