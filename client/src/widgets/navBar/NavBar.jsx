@@ -38,11 +38,11 @@ export default function NavBar({setUser, user}) {
             [Имя]
           </NavLink>
         </Nav>
-         {user.status === "logged" && (
+         {/* {user.status === "logged" && (
           <Button variant="light" onClick={logoutHandler}>
             Выйти
           </Button>
-        )}
+        )} */}
       </Container>
     </Navbar>
   );
