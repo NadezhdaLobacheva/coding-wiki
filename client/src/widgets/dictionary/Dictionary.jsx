@@ -48,29 +48,29 @@ export default function Dictionary() {
     debouncedSearch(value);
   };
 
-const handleSortWords = async () => {
-  try {
-    const nextOrder = order === "DESC" ? "ASC" : "DESC";
-    setOrder(nextOrder);
-    const res = await fetch(
-      `http://localhost:3000/api/contents/sortByDate?order=${nextOrder}`
-    );
-    const json = await res.json();
-    setSortedContents(json.data); 
-    setResult(null);
-    setSortedTags([]);
-    setError("");
-  } catch (err) {
-    console.error(err);
-    setError("Ошибка при сортировке слов.");
-  }
+  const handleSortWords = async () => {
+    try {
+      const nextOrder = order === "DESC" ? "ASC" : "DESC";
+      setOrder(nextOrder);
+      const res = await fetch(
+        `http://localhost:3000/api/contents/sortByDate?order=${nextOrder}`
+      );
+      const data = await res.json();
+      setSortedContents(data);
+      setResult(null);
+      setSortedTags([]);
+      setError("");
+    } catch (err) {
+      console.error(err);
+      setError("Ошибка при сортировке слов.");
+    }
+  };
 
   const handleSortTags = async () => {
     try {
       const res = await fetch(
         `http://localhost:3000/api/tags/sortByContentCount?order=DESC`
       );
-      
       const data = await res.json();
       setSortedTags(data.data);
       setResult(null);
