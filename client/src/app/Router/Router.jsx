@@ -4,7 +4,7 @@ import LoginPage from "../../pages/AuthPages/LoginPage";
 import SignUpPage from "../../pages/AuthPages/SignUpPage";
 import ContentPage from "../../pages/ContentPage/ContentPage";
 import ProfilePage from "../../pages/ProfilePage/ProfilePage";
-// import Dictionary from "../../widgets/dictionary/Dictionary";
+
 
 export default function Router({ user, setUser }) {
   return (
@@ -31,7 +31,6 @@ export default function Router({ user, setUser }) {
               </div>
             }
           />
-          {/* <Route path="/search" element={<Dictionary />} /> */}
         </Route>
       </Routes>
     </BrowserRouter>

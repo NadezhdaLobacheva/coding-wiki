@@ -105,7 +105,7 @@ export default function ContentPage({ user }) {
         />
         <div style={{ display: "flex", gap: 6 }}>
           <Button onClick={handleSortDate} variant="secondary" size="sm">
-            <Calendar2 />
+          date
           </Button>
           <Button onClick={handleSortTags} variant="secondary" size="sm">
             <Hash />

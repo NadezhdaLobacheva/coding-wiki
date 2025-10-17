@@ -17,7 +17,7 @@ class AuthController {
         email,
         password: hashedPassword,
       });
-      if (!created) return res.status(400).json({ message: 'User already exists' });
+      if (!created) return res.status(400).json({ message: 'Пользователь с таким email уже зарегистрирован' });
 
       // удаляем метаданные
       const plainUser = user.get();

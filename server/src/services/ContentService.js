@@ -47,9 +47,29 @@ class ContentService {
   }
 
   static async updateContent(id, data) {
-    const content = await Content.findByPk(id);
+    const content = await Content.findByPk(id, { include: ["tags"] });
     if (!content) return null;
-    return await content.update(data);
+
+    await content.update(data);
+
+    if (data.tags && typeof data.tags === "string") {
+      const tagNames = data.tags
+        .split(/[\s,]+/)
+        .filter((tag) => tag.trim() !== "");
+      const tagInstances = [];
+
+      for (const tagName of tagNames) {
+        const [tag] = await Tag.findOrCreate({
+          where: { desc: tagName.trim() },
+        });
+        tagInstances.push(tag);
+      }
+
+      await content.setTags(tagInstances);
+    }
+
+    // Возвращаем обновлённый контент с тегами
+    return await Content.findByPk(id, { include: ["tags"] });
   }
 
   static async deleteContent(id) {

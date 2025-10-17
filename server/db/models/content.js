@@ -14,7 +14,7 @@ module.exports = (sequelize, DataTypes) => {
   Content.init(
     {
       word: DataTypes.STRING,
-      desc: DataTypes.STRING,
+      desc: DataTypes.TEXT,
       user_id: DataTypes.INTEGER,
     },
     {
