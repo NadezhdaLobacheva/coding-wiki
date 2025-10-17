@@ -65,11 +65,14 @@ export default function ContentPage({ user }) {
   };
 
   const handleSortDate = () => {
+    const newDirection = sortDirection === "asc" ? "desc" : "asc";
+    setSortDirection(newDirection);
+
     words.sort((a, b) => {
       const dateA = new Date(a.createdAt);
       const dateB = new Date(b.createdAt);
 
-      if (sortDirection === "asc") {
+      if (newDirection === "asc") {
         return dateA - dateB;
       } else {
         return dateB - dateA;
