@@ -59,8 +59,15 @@ export default function WordAddForm({ user }) {
         placeholder="Введите теги (через пробел или запятую)"
         name="tags"
       />
-      <Button variant="secondary" type="submit">
-        <PlusCircle />
+      <Button
+        style={{
+          backgroundColor: "#093d76ff",
+          border: "none",
+          color: "1e90ff",
+        }}
+        type="submit"
+      >
+        Сохранить
       </Button>
     </Form>
   );
